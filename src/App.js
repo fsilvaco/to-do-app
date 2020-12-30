@@ -1,19 +1,18 @@
 import { useState } from "react";
 
 function App() {
-  const [task, setTask] = useState([]);
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [task, setTask] = useState({
+    title: "",
+    category: "",
+  });
+
+  const handleChange = (e) => {
+    setTask({ ...task, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTask([
-      ...task,
-      {
-        title: title,
-        category: category,
-      },
-    ]);
+    console.log(task);
   };
 
   return (
@@ -21,24 +20,19 @@ function App() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          name="title"
+          value={task.title}
+          onChange={handleChange}
         ></input>
         <br />
         <input
           type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          name="category"
+          value={task.category}
+          onChange={handleChange}
         ></input>
-        <button>Add task</button>
+        <button type="submit">Add task</button>
       </form>
-      <ul>
-        {task.map((item, index) => (
-          <li key={index}>
-            Title: {item.title} | Categoria: {item.category}
-          </li>
-        ))}
-      </ul>
     </>
   );
 }
