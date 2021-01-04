@@ -1,17 +1,20 @@
 import { useState } from "react";
 
 function App() {
-  const [task, setTask] = useState({
-    title: "",
-    category: "",
-  });
+  const [task, setTask] = useState([]);
 
-  const handleChange = (e) => {
-    setTask({ ...task, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setTask([...task, { [e.target.name]: e.target.value }]);
+  // };
+
+  // const handleChange = () => {
+  //   setTask([...task, { nome: "teste", idade: 32 }]);
+  //   console.log(task);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setTask([...task, { [e.target.name]: e.target.value }]);
     console.log(task);
   };
 
@@ -22,14 +25,14 @@ function App() {
           type="text"
           name="title"
           value={task.title}
-          onChange={handleChange}
+          onChange={(e) => e.target.value}
         ></input>
         <br />
         <input
           type="text"
           name="category"
           value={task.category}
-          onChange={handleChange}
+          onChange={(e) => e.target.value}
         ></input>
         <button type="submit">Add task</button>
       </form>
