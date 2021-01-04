@@ -2,40 +2,33 @@ import { useState } from "react";
 
 function App() {
   const [task, setTask] = useState([]);
-
-  // const handleChange = (e) => {
-  //   setTask([...task, { [e.target.name]: e.target.value }]);
-  // };
-
-  // const handleChange = () => {
-  //   setTask([...task, { nome: "teste", idade: 32 }]);
-  //   console.log(task);
-  // };
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [id, setId] = useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTask([...task, { [e.target.name]: e.target.value }]);
-    console.log(task);
+    setId(id + 1);
+    setTask([...task, { id, title, category }]);
+    setTitle("");
+    setCategory("");
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
         <input
-          type="text"
-          name="title"
-          value={task.title}
-          onChange={(e) => e.target.value}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         ></input>
-        <br />
-        <input
-          type="text"
-          name="category"
-          value={task.category}
-          onChange={(e) => e.target.value}
-        ></input>
-        <button type="submit">Add task</button>
+        <button type="submit">Enviar</button>
       </form>
+      {task.map((item, index) => (
+        <p key={index}>
+          id: {item.id} Titulo: {item.title} - Categoria: {item.category}
+        </p>
+      ))}
     </>
   );
 }
