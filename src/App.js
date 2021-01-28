@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { GlobalStyles, Content } from "./globalStyles";
+import Date from "../src/components/Date";
+import Overview from "../src/components/Overview";
 
 function App() {
   const [task, setTask] = useState([]);
@@ -16,19 +19,28 @@ function App() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
-        <input
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        ></input>
-        <button type="submit">Enviar</button>
-      </form>
-      {task.map((item, index) => (
-        <p key={index}>
-          id: {item.id} Titulo: {item.title} - Categoria: {item.category}
-        </p>
-      ))}
+      <Content>
+        <Date />
+        <Overview />
+        <Content.Line />
+        {/* <form onSubmit={handleSubmit}>
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          ></input>
+          <input
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          ></input>
+          <button type="submit">Enviar</button>
+        </form>
+        {task.map((item, index) => (
+          <p key={index}>
+            id: {item.id} Titulo: {item.title} - Categoria: {item.category}
+          </p>
+        ))} */}
+      </Content>
+      <GlobalStyles />
     </>
   );
 }
