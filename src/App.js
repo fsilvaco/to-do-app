@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { GlobalStyles, Content } from "./globalStyles";
+import { GlobalStyles, Content } from "./styles/globalStyles";
 import Date from "../src/components/Date";
 import Overview from "../src/components/Overview";
 import Tasks from "../src/components/Tasks";
+import Button from "../src/components/Button";
 
 function App() {
   const [task, setTask] = useState([]);
@@ -25,6 +26,7 @@ function App() {
         <Overview />
         <Content.Line />
         <Tasks />
+        <Button />
         {/* <form onSubmit={handleSubmit}>
           <input
             value={title}
