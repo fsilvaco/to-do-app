@@ -1,7 +1,7 @@
 const taskData = [
   {
     id: 1,
-    isChecked: false,
+    isChecked: true,
     title: "Upload 1099-R to TurboTax",
     category: "Finance",
   },
@@ -13,7 +13,7 @@ const taskData = [
   },
   {
     id: 3,
-    isChecked: false,
+    isChecked: true,
     title: "Hand sanitizer",
     category: "Shopping List",
   },
